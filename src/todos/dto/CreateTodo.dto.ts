@@ -1,18 +1,15 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNotEmpty, IsOptional, IsString } from "class-validator";
+import { IsEmpty, IsNotEmpty, IsOptional, IsString } from "class-validator";
+import { User } from "src/auth/user.model";
 
 export class CreateTodoDto{
-
+ 
 
 
 	@ApiProperty({
 		description : "Unique Slug for the todo " , 
 		example: "install-nest"
 	})
-	@IsString()
-	@IsNotEmpty()
-	slug: string;
-
 
 	@ApiProperty({example : "install nest js project with basic structure"})
 	@IsString()
@@ -24,5 +21,8 @@ export class CreateTodoDto{
 	@IsString()
 	@IsOptional()
 	content: string;
+
+	@IsEmpty()
+	user:User
 
 }	
